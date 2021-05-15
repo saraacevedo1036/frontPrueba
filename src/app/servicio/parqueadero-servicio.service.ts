@@ -1,9 +1,7 @@
 import { HttpService } from './HttpService';
 import { Movimiento } from './../parqueadero/modelo/Movimiento';
 import { TipoVehiculo } from './../parqueadero/modelo/TipoVehiculo';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +17,13 @@ export class ParqueaderoServicioService {
 
   public listarTipoVehiculo(){
     return this.http.doGet<TipoVehiculo[]>(`http://localhost:8080/tipo_vehiculo`, this.http.optsName('Consulta de tipo de vehiculo'));
+  }
+
+  public listarCarrosEnParqueadero(){
+    return this.http.doGet<Movimiento[]>(`http://localhost:8080/movimiento`, this.http.optsName('Procesando listar vehiculos'));
+  }
+
+  public registrarSalidaDelVehiculo(id: number, fecha: string, movimiento: Movimiento){
+    return this.http.doPut<Movimiento, boolean>(`http://localhost:8080/movimiento/${id}/${fecha}`, movimiento);
   }
 }

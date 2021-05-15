@@ -3,7 +3,7 @@ import { Tarifa } from './Tarifa';
 import { Vehiculo } from './Vehiculo';
 export class Movimiento {
 
-    id?: number;
+    id!: number;
     horaIngreso: Date;
     horaSalida!: Date;
     vehiculo: Vehiculo;
