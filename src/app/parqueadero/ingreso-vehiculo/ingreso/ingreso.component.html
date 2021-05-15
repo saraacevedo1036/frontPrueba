@@ -1,0 +1,39 @@
+<div class="jumbotron">
+  <h1 class="display-4">Ingreso Automovil</h1>
+  <form [formGroup]="registroForm" (ngSubmit)="crearRegistro()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Fecha Ingreso</label>
+        <input type="date" class="form-control" id="fecha-ingreso" name="horaIngreso" formControlName="horaIngreso"
+          placeholder="YYYY-MM-DD">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">placa</label>
+        <input type="text" class="form-control" id="placa" name="placa" formControlName="placa" placeholder="placa">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">color del vehiculo</label>
+        <input type="text" class="form-control" id="color" name="color" formControlName="color" placeholder="placa">
+      </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputState">Tipo Vehiculo</label>
+            <select id="inputState" class="form-control" name="tipoVehiculo" formControlName="tipoVehiculo">
+                <option [ngValue]="null" disabled>Seleccione un tipo de vehiculo</option>
+                <option class="seleccion" *ngFor="let tipoVehiculo of tipoVehiculo " [ngValue]="tipoVehiculo">
+                    {{tipoVehiculo.descripcion}}
+                </option>
+            </select>
+        </div>
+    </div>
+        <div class="botones">
+        <button type="submit" id="crearRegistro" class="btn btn-primary" (ngSubmit)="crearRegistro()"
+            [disabled]="!registroForm.valid">Crear</button>
+        <button type="submit" class="btn btn-danger" >Volver</button>
+        </div>
+    </form>
+</div>
